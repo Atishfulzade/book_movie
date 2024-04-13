@@ -14,11 +14,14 @@ const Movie = ({ setInfoSubmitted }) => {
       return;
     }
     try {
-      await axios.post("http://localhost:3000/api/booking", {
-        movie: selectedMovie,
-        seats: selectedSeat,
-        slot: selectedSlot,
-      });
+      await axios.post(
+        "https://book-movie-iqfk2v6ti-atishs-projects-55a5a6a4.vercel.app/api/booking",
+        {
+          movie: selectedMovie,
+          seats: selectedSeat,
+          slot: selectedSlot,
+        }
+      );
       toast.success("Booking done");
       // Reset form fields after successful booking
       setSelectedMovie("");
