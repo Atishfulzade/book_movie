@@ -1,4 +1,7 @@
 const Booking = require("../model/bookingSchema.js");
+const firstPage = () => {
+  console.log("First Page");
+};
 const bookingMovie = async (req, res) => {
   const bookMyShow = new Booking({
     movie: req.body.movie,
@@ -20,4 +23,4 @@ const lastMovie = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
-module.exports = { lastMovie, bookingMovie };
+module.exports = { firstPage, lastMovie, bookingMovie };

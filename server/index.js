@@ -1,27 +1,35 @@
 const express = require("express");
-const app = express();
 const cors = require("cors");
 const client = require("./connection/Conn.js");
-const { lastMovie, bookingMovie } = require("./controller/Controller.js");
-app.use(express.json());
+const {
+  firstPage,
+  lastMovie,
+  bookingMovie,
+} = require("./controller/Controller.js");
+
+const app = express();
+
 app.use(cors());
+app.use(express.json());
+
 async function run() {
   try {
-    // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
-    // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
-    console.log(
-      "Pinged your deployment. You successfully connected to MongoDB!"
-    );
+    console.log("Successfully connected to MongoDB!");
   } catch (err) {
-    console.log("DB connection error");
+    console.error("DB connection error:", err);
+    process.exit(1); // Exit the process if unable to connect to MongoDB
   }
 }
-run().catch(console.dir);
+
+run().catch(console.error);
+app.get("/", firstPage);
 app.get("/api/booking", lastMovie);
 app.post("/api/booking", bookingMovie);
 
-app.listen(3000, () => {
-  console.log("Server is running on port 3000");
+const PORT = process.env.PORT || 3000; // Use the port defined by environment variable or default to 3000
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
