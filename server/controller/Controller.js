@@ -1,6 +1,6 @@
 const Booking = require("../model/bookingSchema.js");
-const firstPage = () => {
-  console.log("First Page");
+const firstPage = (req, res) => {
+  res.send("First Page");
 };
 const bookingMovie = async (req, res) => {
   const bookMyShow = new Booking({
