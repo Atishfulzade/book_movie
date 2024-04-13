@@ -8,7 +8,7 @@ const LastSeatBooking = ({ isLoading, infoSubmitted }) => {
     const fetchData = async () => {
       try {
         const result = await axios.get(
-          "https://book-movie-iqfk2v6ti-atishs-projects-55a5a6a4.vercel.app/api/booking"
+          "https://book-movie-api.vercel.app/api/booking"
         );
         // Extract the last booking from the response data array
         const lastBooking = result.data[result.data.length - 1];
