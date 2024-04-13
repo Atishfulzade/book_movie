@@ -1,13 +1,17 @@
-const { MongoClient, ServerApiVersion } = require("mongodb");
-const uri =
-  "mongodb+srv://atishfulzade1234:KMx0rmWbcR2jkE6J@api-movie.mojcktp.mongodb.net/?retryWrites=true&w=majority&appName=api-movie";
+const mongoose = require("mongoose");
 
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  },
-});
-module.exports = client;
+async function connect() {
+  try {
+    await mongoose.connect(
+      "mongodb+srv://atishfulzade1234:KMx0rmWbcR2jkE6J@api-movie.mojcktp.mongodb.net/?retryWrites=true&w=majority&appName=api-movie",
+      {
+        dbName: "movie-booking", // Specify your database name
+      }
+    );
+    console.log("Database connection established");
+  } catch (error) {
+    console.error("Error connecting to database:", error);
+  }
+}
+
+module.exports = connect;

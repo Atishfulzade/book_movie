@@ -8,18 +8,28 @@ const Movie = ({ setInfoSubmitted }) => {
   const [selectedMovie, setSelectedMovie] = useState("");
   const [selectedSeat, setSelectedSeat] = useState("");
   const [selectedSlot, setSelectedSlot] = useState("");
+
   const submitData = async () => {
-    if (!selectedMovie || !selectedSeat || !selectedSlot) {
-      toast.error("Please select a movie, seat, and slot");
-      return;
-    }
     try {
+      if (!selectedMovie || !selectedSeat || !selectedSlot) {
+        toast.error("Please select a movie, seat, and slot");
+        return;
+      }
+
+      // Show loading toast
+      const loadingToast = toast.loading("Booking in progress...");
+
+      // Make POST request to server
       await axios.post("https://book-movie-api.vercel.app/api/booking", {
         movie: selectedMovie,
         seats: selectedSeat,
         slot: selectedSlot,
       });
+
+      // Close loading toast and show success toast
+      toast.dismiss(loadingToast);
       toast.success("Booking done");
+
       // Reset form fields after successful booking
       setSelectedMovie("");
       setSelectedSeat("");
@@ -27,6 +37,7 @@ const Movie = ({ setInfoSubmitted }) => {
       setInfoSubmitted(true);
       window.location.reload();
     } catch (error) {
+      // Show error toast
       toast.error("Booking failed. Please try again later.");
     }
   };
