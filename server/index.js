@@ -9,7 +9,13 @@ const connect = require("./connection/Conn.js");
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://book-movie-lake.vercel.app",
+    credentials: true,
+    methods: ["GET", "POST"],
+  })
+);
 app.use(express.json());
 
 connect();
