@@ -20,7 +20,7 @@ const Movie = ({ setInfoSubmitted }) => {
       const loadingToast = toast.loading("Booking in progress...");
 
       // Make POST request to server
-      await axios.post("https://book-movie-api.vercel.app/api/booking", {
+      await axios.post("http://localhost:3000/api/booking", {
         movie: selectedMovie,
         seats: selectedSeat,
         slot: selectedSlot,
