@@ -20,11 +20,14 @@ const Movie = ({ setInfoSubmitted }) => {
       const loadingToast = toast.loading("Booking in progress...");
 
       // Make POST request to server
-      await axios.post("https://book-movie-api.vercel.app/api/booking", {
-        movie: selectedMovie,
-        seats: selectedSeat,
-        slot: selectedSlot,
-      });
+      await axios.post(
+        "https://movie-book-api-e4e1fddd3872.herokuapp.com/api/booking",
+        {
+          movie: selectedMovie,
+          seats: selectedSeat,
+          slot: selectedSlot,
+        }
+      );
 
       // Close loading toast and show success toast
       toast.dismiss(loadingToast);

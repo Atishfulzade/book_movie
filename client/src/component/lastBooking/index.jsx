@@ -8,7 +8,7 @@ const LastSeatBooking = ({ isLoading, infoSubmitted }) => {
     const fetchData = async () => {
       try {
         const result = await axios.get(
-          "https://book-movie-api.vercel.app/api/booking"
+          "https://movie-book-api-e4e1fddd3872.herokuapp.com/api/booking"
         );
         // Extract the last booking from the response data array
         const lastBooking = result.data[result.data.length - 1];
