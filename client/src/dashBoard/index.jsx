@@ -8,7 +8,7 @@ const DashBoard = () => {
 
   return (
     <>
-      <div className="flex justify-center items-center h-screen gap-3 flex-wrap bg-slate-100">
+      <div className="flex justify-center items-center h-fit gap-3  flex-wrap bg-slate-100 md:h-screen">
         <Toaster />
         <Movie
           isLoading={isLoading}

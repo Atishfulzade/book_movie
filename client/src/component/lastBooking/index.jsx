@@ -22,7 +22,7 @@ const LastSeatBooking = ({ isLoading, infoSubmitted }) => {
   }, [isLoading, infoSubmitted]);
 
   return (
-    <div className="bg-slate-100 w-full md:h-full md:w-96 rounded p-3 md:pt-20">
+    <div className="bg-slate-100 w-full md:h-[680px] md:w-96 rounded p-3  md:pt-20">
       <div className="flex flex-col h-fit min-h-[455px] w-full bg-slate-50 border border-slate-500 rounded-lg p-3  ">
         {lastBooking ? (
           <div>
